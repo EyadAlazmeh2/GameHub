@@ -4,7 +4,7 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
-import { Game } from "../hooks/UseGames";
+import { Game } from "../hooks/useGames";
 
 
 interface Props {
