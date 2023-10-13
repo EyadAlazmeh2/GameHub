@@ -4,10 +4,17 @@ interface Props {
 }
 
 const CiriticScore = ({ score }: Props) => {
-  const color = score > 75 ? 'green' : score > 60 ? 'yellow' : '';
+  const color = score > 75 ? "green" : score > 60 ? "yellow" : "";
   return (
     <>
-      <Badge fontSize='14px' borderRadius='4px' colorScheme={color} paddingX={2}>{score}</Badge>
+      <Badge
+        fontSize="14px"
+        borderRadius="4px"
+        colorScheme={color}
+        paddingX={2}
+      >
+        {score}
+      </Badge>
     </>
   );
 };
