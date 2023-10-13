@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface fetchGames {
@@ -11,7 +12,7 @@ interface fetchGames {
   results: Game[];
 }
 
-const useGames = () => {
+const UseGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
@@ -34,4 +35,4 @@ const useGames = () => {
   return { error, games };
 };
 
-export default useGames;
+export default UseGames;
