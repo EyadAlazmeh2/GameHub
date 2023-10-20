@@ -8,7 +8,7 @@ import {
   FaApple,
   FaLinux,
 } from "react-icons/fa";
-import { MdPhoneIphone } from "react-icons/md";
+import { MdPhoneIphone , MdWeb} from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -26,6 +26,7 @@ const PlatformListIcon = ({ platforms }: Props) => {
     linux: FaLinux,
     nintendo: SiNintendo,
     ios: MdPhoneIphone,
+    web: MdWeb
   };
   return (
     <HStack>
