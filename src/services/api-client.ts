@@ -10,10 +10,10 @@
 // export { CanceledError };
 
 import axios, { AxiosRequestConfig, CanceledError } from "axios";
-import { GameQuery } from "../App";
 
 export interface FetchResponse<T> {
   count: string;
+  next: string | null;
   results: T[];
 }
 
@@ -29,13 +29,10 @@ export class ApiClient<T> {
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
-  getAll = <T>(requestConfig?: AxiosRequestConfig) =>
-    axiosInstanse
+  getAll = (requestConfig: AxiosRequestConfig) => {
+    return axiosInstanse
       .get<FetchResponse<T>>(this.endpoint, requestConfig)
-      .then((res) => res.data.results);
-  postAll = (data: string) =>
-    axiosInstanse
-      .post<FetchResponse<T>>(this.endpoint, data)
-      .then((res) => res.data.results);
+      .then((res) => res.data);
+  };
 }
-export { CanceledError }
+export { CanceledError };
