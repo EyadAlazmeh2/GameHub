@@ -1,33 +1,22 @@
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  SimpleGrid,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Button, HStack, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { GameQuery } from "../App";
 import UseGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
-import React from "react";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const {
-    error,
-    data,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = UseGames(gameQuery);
+  const { error, data, isLoading, fetchNextPage, hasNextPage } =
+    UseGames(gameQuery);
   const Skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const fetchScroll =
+    data?.pages.reduce((totla, page) => totla + page.results.length, 0) || 0;
   if (error)
     return (
       <Text color="red" fontSize="30px">
@@ -35,8 +24,23 @@ const GameGrid = ({ gameQuery }: Props) => {
       </Text>
     );
   return (
-    <Box padding="10px">
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+    <InfiniteScroll
+      dataLength={fetchScroll}
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={
+        <HStack justifyContent='center'>
+          <Button marginLeft={2} marginY={5} paddingX={14}>
+            <Spinner />
+          </Button>
+        </HStack>
+      }
+    >
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
+        spacing={6}
+        padding="10px"
+      >
         {isLoading &&
           Skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
@@ -53,12 +57,7 @@ const GameGrid = ({ gameQuery }: Props) => {
           </React.Fragment>
         ))}
       </SimpleGrid>
-      {hasNextPage && (
-        <Button marginY={5} onClick={() => fetchNextPage()}>
-          {isFetchingNextPage ? <Spinner /> : "Load More"}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 };
 
