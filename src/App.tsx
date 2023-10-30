@@ -1,13 +1,11 @@
-import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import PlatformSelector from "./components/PlatformSelector";
-import { Genre } from "./hooks/useGenre";
-import { Platform } from "./hooks/usePlatform";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import { useState } from "react";
-import SortSelector from "./components/SortSelector";
+import GameGrid from "./components/GameGrid";
 import GameHaeding from "./components/GameHaeding";
+import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
+import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genreId?: number;
@@ -52,7 +50,7 @@ function App() {
               <PlatformSelector
                 selectedPlatformId={gameQuery.platformId}
                 onSelectedPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platformId: platform.id })
+                  setGameQuery({ ...gameQuery, platformId: platform?.id })
                 }
               ></PlatformSelector>
             </Box>

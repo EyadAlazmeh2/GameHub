@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { MdPhoneIphone, MdWeb } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import { Platform } from "../hooks/usePlatform";
+import { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   platforms: Platform[];
@@ -26,7 +26,7 @@ const PlatformListIcon = ({ platforms }: Props) => {
     linux: FaLinux,
     nintendo: SiNintendo,
     ios: MdPhoneIphone,
-    web: MdWeb
+    web: MdWeb,
   };
   return (
     <HStack>
