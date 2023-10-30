@@ -4,14 +4,14 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
 import { Genre } from "./hooks/useGenre";
-import { Platforms } from "./hooks/usePlatform";
+import { Platform } from "./hooks/usePlatform";
 import { useState } from "react";
 import SortSelector from "./components/SortSelector";
 import GameHaeding from "./components/GameHaeding";
 
 export interface GameQuery {
   genre: Genre | null;
-  platform: Platforms | null;
+  platform: Platform | null;
   sortOrder: string;
   searchText: string;
 }
@@ -45,7 +45,7 @@ function App() {
       <GridItem area="main">
         <Box paddingLeft={2}>
           <GameHaeding gameQuery={gameQuery}></GameHaeding>
-          <Flex marginBottom={6}>
+          <Flex marginBottom={5}>
             <Box marginRight={5}>
               <PlatformSelector
                 selectedPlatforms={gameQuery.platform}

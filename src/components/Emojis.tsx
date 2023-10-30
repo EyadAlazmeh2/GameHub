@@ -1,7 +1,7 @@
-import dis from "../assets/meh.webp";
-import pow from "../assets/bulls-eye.webp";
-import like from "../assets/thumbs-up.webp";
 import { Image, ImageProps } from "@chakra-ui/react";
+import pow from "../assets/bulls-eye.webp";
+import dis from "../assets/meh.webp";
+import like from "../assets/thumbs-up.webp";
 
 interface Props {
   rating: number;
