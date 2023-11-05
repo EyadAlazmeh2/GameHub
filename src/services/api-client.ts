@@ -34,5 +34,10 @@ export class ApiClient<T> {
       .get<FetchResponse<T>>(this.endpoint, requestConfig)
       .then((res) => res.data);
   };
+  get = (id: number | string) => {
+    return axiosInstanse
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
 export { CanceledError };

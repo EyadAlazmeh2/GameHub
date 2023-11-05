@@ -7,23 +7,23 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/Image-url";
 import useGameQuery from "../store";
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
-  const {gameQuery, add} = useGameQuery()
+  const { gameQuery, add } = useGameQuery();
   if (isLoading) return <Spinner />;
   if (error) return null;
   return (
     <>
-      <Heading paddingLeft={2} fontSize="2xl" marginBottom={3}>
+      <Heading fontSize="2xl" marginBottom={3}>
         Genres
       </Heading>
       <List>
         {data?.results.map((genre) => (
-          <ListItem key={genre.id} paddingY={2} paddingLeft={2}>
+          <ListItem key={genre.id} paddingY={2}>
             <HStack>
               <Image
                 boxSize="32px"
@@ -35,7 +35,7 @@ const GenreList = () => {
                 variant="link"
                 fontWeight={genre.id === gameQuery.genreId ? "bold" : "normal"}
                 // onClick={() => onSelectGenre(genre)}
-                onClick={() => add({...gameQuery ,genreId: genre.id})}
+                onClick={() => add({ ...gameQuery, genreId: genre.id })}
               >
                 {genre.name}
               </Button>

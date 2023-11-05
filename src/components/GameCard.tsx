@@ -4,6 +4,7 @@ import getCroppedImageUrl from "../services/Image-url";
 import CiriticScore from "./CiriticScore";
 import Emojis from "./Emojis";
 import PlatformListIcon from "./PlatformListIcon";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -22,7 +23,7 @@ const GameCard = ({ game }: Props) => {
             <CiriticScore score={game.metacritic}></CiriticScore>
           </HStack>
           <Heading fontSize="xl" marginBottom={1}>
-            {game.name}
+            <Link to={'/games/' + game.slug}>{game.name}</Link>
           </Heading>
           <Emojis rating={game.rating_top} />
         </CardBody>
