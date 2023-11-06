@@ -1,7 +1,6 @@
-import { SimpleGrid, GridItem, Text } from "@chakra-ui/react";
-import React from "react";
+import { GridItem, SimpleGrid, Text } from "@chakra-ui/react";
+import Game from "../entities/Game";
 import CiriticScore from "./CiriticScore";
-import { Game } from "../entities/Game";
 
 interface Props {
   data?: Game;
