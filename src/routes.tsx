@@ -4,16 +4,16 @@ import GameDetailPage from "./pages/GameDetailPage";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 
-const routes = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "games/:slug", element: <GameDetailPage /> },
+      { path: "/games/:slug", element: <GameDetailPage /> },
     ],
   },
 ]);
 
-export default routes;
+export default router;
