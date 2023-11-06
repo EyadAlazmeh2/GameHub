@@ -9,7 +9,7 @@ interface Props {
 
 const GameAttributes = ({ data }: Props) => {
   return (
-    <SimpleGrid columns={2} spacing={8} marginY={5}>
+    <SimpleGrid columns={2} spacing={5} marginY={5}>
       <GridItem>
         <Text color="gray.600" fontWeight="bold">
           Platforms
