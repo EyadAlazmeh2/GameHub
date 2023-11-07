@@ -5,7 +5,6 @@ import { ApiClient } from "../services/api-client";
 const useScreenshot = (gameId?: number) => {
   const apiClient = new ApiClient<Screenshot>(`/games/${gameId}/screenshots`);
 
-  
   return useQuery({
     queryKey: ["screenshot", gameId],
     queryFn: apiClient.getAll,
