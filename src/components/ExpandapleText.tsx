@@ -11,7 +11,7 @@ const ExpandapleText = ({ children }: Props) => {
 
   if (!children) return null;
 
-  if (children.length < limit) return children;
+  if (children.length <= limit) return <Text>{children}</Text>;
   const summary = value ? children : children.substring(0, limit) + " .....";
   return (
     <>
